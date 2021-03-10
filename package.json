@@ -1,0 +1,17 @@
+{
+  "name": "mandlebrot",
+  "version": "1.0.0",
+  "description": "Visualizes the Mandlebrot set.",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "parcel": "^1.12.4",
+    "parcel-bundler": "^1.12.3"
+  },
+  "scripts": {
+    "serve": "parcel ./src/index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
