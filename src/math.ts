@@ -1,4 +1,9 @@
-export const getMandlebrotInclusion = (c, ci, iterations, limit = 3) => {
+export function getMandlebrotInclusion(
+  c: number,
+  ci: number,
+  iterations: number,
+  limit: number = 3
+): number {
   let z = 0;
   let zi = 0;
 
@@ -17,7 +22,7 @@ export const getMandlebrotInclusion = (c, ci, iterations, limit = 3) => {
     zi = newZi;
 
     if (z * zi > limit) {
-      return Math.round(i / iterations * 100);
+      return Math.round((i / iterations) * 100);
     }
   }
 

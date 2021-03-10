@@ -6,12 +6,15 @@
   "dependencies": {},
   "devDependencies": {
     "parcel": "^1.12.4",
-    "parcel-bundler": "^1.12.3"
+    "parcel-bundler": "^1.12.3",
+    "prettier": "^2.2.1",
+    "typescript": "^4.2.3"
   },
   "scripts": {
     "serve": "parcel ./src/index.html",
     "build": "parcel build ./src/index.html",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "prettier --check .",
+    "fix": "prettier --write ."
   },
   "author": "",
   "license": "ISC"
