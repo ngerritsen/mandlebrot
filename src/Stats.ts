@@ -10,8 +10,7 @@ export function setSize(width: number, height: number): void {
 }
 
 export function setZoom(zoom: number): void {
-  document.querySelector("[data-zoom]").textContent =
-    round(zoom * 100, 2) + "%";
+  document.querySelector("[data-zoom]").textContent = "x" + round(zoom, zoom >= 10 ? 0 : 1);
 }
 
 export function setPan(pan: Pan): void {

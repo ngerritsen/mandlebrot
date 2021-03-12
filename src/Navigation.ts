@@ -57,8 +57,8 @@ export default class Navigation {
       }
       case "r": {
         this.zoom = 1;
-        this.pan.x = window.innerWidth / window.innerHeight;
-        this.pan.y = 1;
+        this.pan.x = 0;
+        this.pan.y = 0;
         break;
       }
       default:
