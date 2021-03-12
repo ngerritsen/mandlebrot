@@ -5,8 +5,8 @@ import { getMandlebrotInclusion } from "./math";
 import { hslToRgb } from "./utils";
 import { RgbColor } from "./Types";
 
-const baseIterations = 120;
-const maxIterations = 500;
+const baseIterations = 128;
+const maxIterations = 512;
 const iterationZoomFactor = 0.001;
 
 export default class Visualization {

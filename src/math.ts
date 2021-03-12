@@ -1,4 +1,4 @@
-const limit = 100;
+const escape = 2;
 
 export function getMandlebrotInclusion(
   c: number,
@@ -22,7 +22,7 @@ export function getMandlebrotInclusion(
     z = newZ;
     zi = newZi;
 
-    if (z * z * zi * zi > limit) {
+    if (Math.abs(z) > escape || Math.abs(zi) > escape) {
       return Math.round((i / iterations) * 100);
     }
   }
