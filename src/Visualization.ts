@@ -35,6 +35,7 @@ export default class Visualization {
 
     stats.setSize(width, height);
     stats.setIterations(iterations);
+    stats.setZoom(this.navigation.getZoom());
 
     let pixelIndex = 0;
 

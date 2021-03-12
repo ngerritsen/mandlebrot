@@ -1,24 +1,31 @@
 body {
-  margin: 0;
-  overflow: hidden;
-  font-family: Arial, Helvetica, sans-serif;
   background-color: black;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
+}
+
+.modal.active .modal-overlay {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+button:hover {
+  cursor: pointer;
 }
 
 .stats {
   position: fixed;
   bottom: 0;
   right: 0;
+  padding: 8px 16px;
   color: white;
-  padding: 16px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: black;
+  border-top-left-radius: 4px;
+  opacity: 0.8;
+}
+
+.stats:hover {
+  opacity: 1;
 }
 
 .stat {
   margin-right: 8px;
+  display: inline-block;
 }

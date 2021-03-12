@@ -1,4 +1,3 @@
-import { Pan } from "./types";
 import { round } from "./utils";
 
 export function setDrawTime(ms: number): void {
@@ -11,13 +10,6 @@ export function setSize(width: number, height: number): void {
 
 export function setZoom(zoom: number): void {
   document.querySelector("[data-zoom]").textContent = "x" + round(zoom, zoom >= 10 ? 0 : 1);
-}
-
-export function setPan(pan: Pan): void {
-  document.querySelector("[data-pan]").textContent = `x: ${round(
-    pan.x,
-    2
-  )}, y: ${round(pan.y, 2)}`;
 }
 
 export function setIterations(n: number): void {

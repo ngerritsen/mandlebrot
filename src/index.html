@@ -1,16 +1,50 @@
 <html>
   <head>
     <title>Mandlebrot</title>
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
     <link rel="stylesheet" href="./style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
   </head>
   <body>
     <canvas id="canvas"></canvas>
+
     <div class="stats">
-      <span class="stat" data-draw-size></span>
-      <span class="stat" data-pan></span>
-      <span class="stat" data-zoom></span>
-      <span class="stat" data-draw-time></span>
-      <span class="stat" data-iterations></span>
+      <span class="stat tooltip" data-tooltip="Total render time" data-draw-time></span>@
+      <span class="stat tooltip" data-tooltip="Size of the drawing" data-draw-size></span>
+      <span class="stat tooltip" data-tooltip="Zoom factor" data-zoom></span>
+      <span class="stat tooltip" data-tooltip="Maximum amount of formula iterations" data-iterations></span>
+      <span class="stat">
+        <div class="popover">
+        <button class="btn btn-sm btn-primary s-circle" data-modal-trigger="more">
+          <i class="icon icon-menu"></i>
+        </button>
+        </div>
+      </span>
+    </div>
+
+    <div class="modal" data-modal="more">
+      <a href="#close" class="modal-overlay" data-modal-close aria-label="Close"></a>
+      <div class="modal-container">
+        <div class="modal-header">
+          <a href="#close" data-modal-close class="btn btn-clear float-right" aria-label="Close"></a>
+          <div class="modal-title h5">Mandlebrot</div>
+        </div>
+        <div class="modal-body">
+          <div class="content">
+            <p>This demo renders the Mandlebrot set using Javascript.</p>
+            <ul>
+              <li>Zoom in and out using <kbd>+</kbd> and <kbd>-</kbd></li>
+              <li>Navigate using the <kbd>w</kbd>, <kbd>a</kbd>, <kbd>s</kbd>, <kbd>d</kbd> or the arrow keys.</li>
+              <li>Reset the view using <kbd>r</kbd>.</li>
+              <li>Resize your window to render in different resolutions 😉</li>
+            </ul>
+          </div>
+        </div>
+        <div class=modal-footer>
+            Made by Niels Gerritsen, <a href="https://github.com/ngerritsen/mandlebrot">GitHub repo</a>.
+        </div>
+      </div>
     </div>
     <script src="./main.ts"></script>
   </body>

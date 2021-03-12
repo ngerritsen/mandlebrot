@@ -1,4 +1,3 @@
-import * as stats from "./stats";
 import { Pan } from "./types";
 
 const panSensitivity = 0.5;
@@ -14,7 +13,6 @@ export default class Navigation {
 
   public constructor() {
     window.addEventListener("keydown", this.navigate.bind(this));
-    this.updateStats();
   }
 
   public onUpdate(callback: () => void): void {
@@ -70,7 +68,6 @@ export default class Navigation {
     }
 
     this.notify();
-    this.updateStats();
   }
 
   private notify() {
@@ -79,10 +76,5 @@ export default class Navigation {
 
   private getPanFactor(): number {
     return panSensitivity * (1 / this.zoom);
-  }
-
-  private updateStats() {
-    stats.setZoom(this.zoom);
-    stats.setPan(this.pan);
   }
 }
