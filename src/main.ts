@@ -1,14 +1,12 @@
 import { debounce } from "./utils";
 import Navigation from "./Navigation";
 import Visualization from "./Visualization";
-import ImageCanvas from "./ImageCanvas";
 
 const updateDelay = 60;
 
 const canvas = <HTMLCanvasElement>document.getElementById("canvas");
-const imageCanvas = new ImageCanvas(canvas);
 const navigation = new Navigation();
-const visualization = new Visualization(navigation, imageCanvas);
+const visualization = new Visualization(navigation, canvas);
 
 const debouncedDraw = debounce(
   visualization.draw.bind(visualization),

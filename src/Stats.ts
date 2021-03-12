@@ -6,7 +6,7 @@ export function setDrawTime(ms: number): void {
 }
 
 export function setSize(width: number, height: number): void {
-  document.querySelector("[data-draw-size]").textContent = width + "x" + height;
+  document.querySelector("[data-draw-size]").textContent = width + "x" + height + "px";
 }
 
 export function setZoom(zoom: number): void {

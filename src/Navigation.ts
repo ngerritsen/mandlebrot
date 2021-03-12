@@ -31,18 +31,22 @@ export default class Navigation {
 
   private navigate(event: KeyboardEvent) {
     switch (event.key) {
+      case "d":
       case "ArrowRight": {
         this.pan.x += this.getPanFactor();
         break;
       }
+      case "a":
       case "ArrowLeft": {
         this.pan.x -= this.getPanFactor();
         break;
       }
+      case "w":
       case "ArrowUp": {
         this.pan.y -= this.getPanFactor();
         break;
       }
+      case "s":
       case "ArrowDown": {
         this.pan.y += this.getPanFactor();
         break;
