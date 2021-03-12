@@ -1,23 +1,23 @@
-import Stats from "./Stats";
+import * as stats from "./stats";
+import { Pan } from "./types";
+
+const panSensitivity = 0.5;
+const zoomSensitivity = 1.7;
 
 export default class Navigation {
-  private readonly panSensitivity: number = 0.5;
-  private readonly zoomSensitivity: number = 1.7;
-  private zoom: number = 1;
+  private zoom = 1;
   private pan: Pan = {
-    x: window.innerWidth / window.innerHeight,
-    y: 1,
+    x: 0,
+    y: 0,
   };
-  private listeners: Function[] = [];
-  private stats: Stats;
+  private listeners: (() => void)[] = [];
 
-  public constructor(stats: Stats) {
-    this.stats = stats;
+  public constructor() {
     window.addEventListener("keydown", this.navigate.bind(this));
     this.updateStats();
   }
 
-  public onUpdate(callback: Function): void {
+  public onUpdate(callback: () => void): void {
     this.listeners.push(callback);
   }
 
@@ -29,30 +29,30 @@ export default class Navigation {
     return this.zoom;
   }
 
-  private navigate(event: KeyboardEvent): void {
+  private navigate(event: KeyboardEvent) {
     switch (event.key) {
       case "ArrowRight": {
-        this.pan.x -= this.getPanFactor();
-        break;
-      }
-      case "ArrowLeft": {
         this.pan.x += this.getPanFactor();
         break;
       }
-      case "ArrowUp": {
-        this.pan.y += this.getPanFactor();
+      case "ArrowLeft": {
+        this.pan.x -= this.getPanFactor();
         break;
       }
-      case "ArrowDown": {
+      case "ArrowUp": {
         this.pan.y -= this.getPanFactor();
         break;
       }
+      case "ArrowDown": {
+        this.pan.y += this.getPanFactor();
+        break;
+      }
       case "=": {
-        this.zoom = Math.max(1, this.zoom * this.zoomSensitivity);
+        this.zoom = Math.max(1, this.zoom * zoomSensitivity);
         break;
       }
       case "-": {
-        this.zoom = Math.max(1, this.zoom / this.zoomSensitivity);
+        this.zoom = Math.max(1, this.zoom / zoomSensitivity);
         break;
       }
       case "r": {
@@ -69,16 +69,16 @@ export default class Navigation {
     this.updateStats();
   }
 
-  private notify(): void {
-    this.listeners.forEach((listener: Function) => listener());
+  private notify() {
+    this.listeners.forEach((listener) => listener());
   }
 
   private getPanFactor(): number {
-    return this.panSensitivity * (1 / this.zoom);
+    return panSensitivity * (1 / this.zoom);
   }
 
-  private updateStats(): void {
-    this.stats.setZoom(this.zoom);
-    this.stats.setPan(this.pan);
+  private updateStats() {
+    stats.setZoom(this.zoom);
+    stats.setPan(this.pan);
   }
 }

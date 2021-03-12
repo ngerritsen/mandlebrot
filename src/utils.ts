@@ -1,4 +1,9 @@
-export function debounce(func: Function, ms: number): Function {
+import { HslColor, RgbColor } from "./types";
+
+export function debounce(
+  func: (...args) => void,
+  ms: number
+): (...args) => void {
   let timeout: number;
 
   return (...args): void => {
@@ -22,6 +27,6 @@ export function hslToRgb(color: HslColor): RgbColor {
   return {
     red: getValue(0),
     green: getValue(8),
-    blue: getValue(4)
+    blue: getValue(4),
   };
 }

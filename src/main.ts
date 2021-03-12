@@ -1,18 +1,20 @@
-import { debounce, hslToRgb } from "./utils";
-import { getMandlebrotInclusion } from "./math";
+import { debounce } from "./utils";
 import Navigation from "./Navigation";
-import Stats from "./Stats";
-import Timer from "./Timer";
-import Canvas from "./Canvas";
+import Visualization from "./Visualization";
+import ImageCanvas from "./ImageCanvas";
 
 const updateDelay = 60;
 
-const stats = new Stats();
-const navigation = new Navigation(stats);
-const canvas = new Canvas(stats, navigation);
+const canvas = <HTMLCanvasElement>document.getElementById("canvas");
+const imageCanvas = new ImageCanvas(canvas);
+const navigation = new Navigation();
+const visualization = new Visualization(navigation, imageCanvas);
 
-const debouncedDraw = debounce(canvas.draw.bind(canvas), updateDelay);
+const debouncedDraw = debounce(
+  visualization.draw.bind(visualization),
+  updateDelay
+);
 
 window.addEventListener("resize", debouncedDraw as EventListener);
 navigation.onUpdate(debouncedDraw);
-canvas.draw();
+visualization.draw();

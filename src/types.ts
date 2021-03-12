@@ -1,16 +1,16 @@
-type RgbColor = {
+export interface RgbColor {
   red: number;
   green: number;
   blue: number;
-};
+}
 
-type HslColor = {
+export interface HslColor {
   hue: number;
   saturation: number;
   lightness: number;
-};
+}
 
-type Pan = {
+export interface Pan {
   x: number;
   y: number;
-};
+}

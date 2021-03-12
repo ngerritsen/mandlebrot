@@ -2,7 +2,7 @@ export function getMandlebrotInclusion(
   c: number,
   ci: number,
   iterations: number,
-  limit: number = 3
+  limit = 3
 ): number {
   let z = 0;
   let zi = 0;
